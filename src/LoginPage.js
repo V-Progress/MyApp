@@ -1,10 +1,9 @@
 /**
- * Sample React Native App
+ * Sample React Native LoginPage
  * https://github.com/facebook/react-native
  * @flow
  */
-
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import {
     Platform,
     StyleSheet,
@@ -15,16 +14,19 @@ import {
     Alert,
     Image
 } from 'react-native';
+import {StackNavigator} from 'react-navigation';
+import HomePage from './HomePage';
 
-export default class App extends Component<Props> {
+export default class LoginPage extends React.Component<Props> {
     title = "Hello World";
     userName;
     password;
-
+    static navigationOptions = {
+        title: 'Login',//设置标题内容
+    };
     render() {
-        // const {navigate} = this.props.navigate;
+        const {navigate} = this.props.navigation;
         return (
-
             <View style={styles.container}>
                 <View style={styles.title}>
                     <Text style={{fontSize: 20}}>
@@ -55,8 +57,8 @@ export default class App extends Component<Props> {
                             Alert.alert("提示", "请输入用户名和密码");
                             return;
                         } else {
-                            Alert.alert("用户名：" + this.userName + "\n密码：" + this.password);
-
+                            // Alert.alert("用户名：" + this.userName + "\n密码：" + this.password);
+                            navigate('Home', {user: 'Lucy'});
                         }
                     }}/>
                 <Image style={{width: 300, height: 300,marginTop: 20}}
@@ -68,7 +70,6 @@ export default class App extends Component<Props> {
         );
     }
 }
-
 
 const styles = StyleSheet.create({
     title: {
@@ -99,4 +100,9 @@ const styles = StyleSheet.create({
         width: 200,
         height: 60
     }
+});
+
+const SimpleApp = StackNavigator({
+    Login: {screen: LoginPage},
+    Home: {screen: HomePage},
 });
