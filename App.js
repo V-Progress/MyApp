@@ -56,11 +56,13 @@ export default class App extends Component<Props> {
                             return;
                         } else {
                             Alert.alert("用户名：" + this.userName + "\n密码：" + this.password);
-                            // navigate('Profile',{name:'jane'});
+
                         }
                     }}/>
                 <Image style={{width: 300, height: 300,marginTop: 20}}
-                       source={{uri:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=339281701,108535093&fm=26&gp=0.jpg'}}/>
+                       source={{
+                           cache:'force-cache',
+                           uri:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=339281701,108535093&fm=26&gp=0.jpg'}}/>
             </View>
 
         );
